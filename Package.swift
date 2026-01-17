@@ -17,9 +17,19 @@ let package = Package(
             targets: ["Random Primitives"]
         ),
     ],
+    dependencies: [
+        .package(path: "../../swift-foundations/swift-testing-extras"),
+    ],
     targets: [
         .target(
             name: "Random Primitives"
+        ),
+        .testTarget(
+            name: "Random Primitives Tests",
+            dependencies: [
+                "Random Primitives",
+                .product(name: "Testing Extras", package: "swift-testing-extras"),
+            ]
         ),
     ],
     swiftLanguageModes: [.v6]
