@@ -1,11 +1,11 @@
 // Random.Error Tests.swift
 
 import Testing
-import Testing_Extras
+import Testing
 @testable import Random_Primitives
 
 extension Random.Error {
-    #TestSuites
+    #Tests
 }
 
 // MARK: - Unit Tests

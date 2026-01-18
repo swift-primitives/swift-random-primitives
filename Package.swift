@@ -9,28 +9,20 @@ let package = Package(
         .iOS(.v26),
         .tvOS(.v26),
         .watchOS(.v26),
-        .visionOS(.v26),
+        .visionOS(.v26)
     ],
     products: [
         .library(
             name: "Random Primitives",
             targets: ["Random Primitives"]
-        ),
+        )
     ],
     dependencies: [
-        .package(path: "../../swift-foundations/swift-testing-extras"),
     ],
     targets: [
         .target(
             name: "Random Primitives"
-        ),
-        .testTarget(
-            name: "Random Primitives Tests",
-            dependencies: [
-                "Random Primitives",
-                .product(name: "Testing Extras", package: "swift-testing-extras"),
-            ]
-        ),
+        )
     ],
     swiftLanguageModes: [.v6]
 )
@@ -41,7 +33,7 @@ for target in package.targets where ![.system, .binary, .plugin, .macro].contain
         .enableUpcomingFeature("InternalImportsByDefault"),
         .enableUpcomingFeature("MemberImportVisibility"),
         .enableExperimentalFeature("Lifetimes"),
-        .strictMemorySafety(),
+        .strictMemorySafety()
     ]
     target.swiftSettings = (target.swiftSettings ?? []) + settings
 }

@@ -1,7 +1,7 @@
 // Random.Generator Tests.swift
 
 import Testing
-import Testing_Extras
+import Testing
 @testable import Random_Primitives
 
 // MARK: - Mock Generator for Testing
@@ -39,7 +39,7 @@ private struct FailingGenerator: Random.Generator, Sendable {
 
 extension Random {
     enum GeneratorTests {
-        #TestSuites
+        #Tests
     }
 }
 
