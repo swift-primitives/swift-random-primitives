@@ -39,7 +39,12 @@ private struct FailingGenerator: Random.Generator, Sendable {
 
 extension Random {
     enum GeneratorTests {
-        #Tests
+        enum Test {
+            @Suite struct Unit {}
+            @Suite struct EdgeCase {}
+            @Suite struct Integration {}
+            @Suite(.serialized) struct Performance {}
+        }
     }
 }
 
