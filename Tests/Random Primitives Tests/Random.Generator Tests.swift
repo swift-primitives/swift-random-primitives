@@ -1,8 +1,7 @@
 // Random.Generator Tests.swift
 
 import Testing
-import Testing
-@testable import Random_Primitives
+import Random_Primitives
 
 // MARK: - Mock Generator for Testing
 

@@ -1,8 +1,7 @@
 // Random.Error Tests.swift
 
 import Testing
-import Testing
-@testable import Random_Primitives
+import Random_Primitives
 
 extension Random.Error {
     enum Test {
