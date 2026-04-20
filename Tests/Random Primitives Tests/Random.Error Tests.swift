@@ -15,14 +15,14 @@ extension Random.Error {
 // MARK: - Unit Tests
 
 extension Random.Error.Test.Unit {
-    @Test("entropyNotReady case exists")
-    func entropyNotReadyExists() {
+    @Test
+    func `entropyNotReady case exists`() {
         let error = Random.Error.entropyNotReady
         _ = error // Verify it compiles
     }
 
-    @Test("systemError case holds error code")
-    func systemErrorHoldsCode() {
+    @Test
+    func `systemError case holds error code`() {
         let error = Random.Error.systemError(42)
         if case .systemError(let code) = error {
             #expect(code == 42)
@@ -31,20 +31,20 @@ extension Random.Error.Test.Unit {
         }
     }
 
-    @Test("Error conforms to Swift.Error")
-    func conformsToError() {
+    @Test
+    func `Error conforms to Swift.Error`() {
         let error: any Swift.Error = Random.Error.entropyNotReady
         _ = error
     }
 
-    @Test("Error conforms to Sendable")
-    func conformsToSendable() {
+    @Test
+    func `Error conforms to Sendable`() {
         let error: any Sendable = Random.Error.entropyNotReady
         _ = error
     }
 
-    @Test("Error conforms to Hashable")
-    func conformsToHashable() {
+    @Test
+    func `Error conforms to Hashable`() {
         var set = Set<Random.Error>()
         set.insert(.entropyNotReady)
         set.insert(.systemError(1))
@@ -52,14 +52,14 @@ extension Random.Error.Test.Unit {
         #expect(set.count == 3)
     }
 
-    @Test("Equal errors are equal")
-    func equality() {
+    @Test
+    func `Equal errors are equal`() {
         #expect(Random.Error.entropyNotReady == Random.Error.entropyNotReady)
         #expect(Random.Error.systemError(42) == Random.Error.systemError(42))
     }
 
-    @Test("Different errors are not equal")
-    func inequality() {
+    @Test
+    func `Different errors are not equal`() {
         #expect(Random.Error.entropyNotReady != Random.Error.systemError(0))
         #expect(Random.Error.systemError(1) != Random.Error.systemError(2))
     }

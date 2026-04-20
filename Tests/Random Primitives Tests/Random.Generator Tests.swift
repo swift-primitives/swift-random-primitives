@@ -50,8 +50,8 @@ extension Random {
 // MARK: - Unit Tests
 
 extension Random.GeneratorTests.Test.Unit {
-    @Test("Generator protocol can be implemented")
-    func protocolImplementation() throws {
+    @Test
+    func `Generator protocol can be implemented`() throws {
         var generator = MockGenerator()
         var buffer = [UInt8](repeating: 0, count: 16)
         try buffer.withUnsafeMutableBytes { ptr in
@@ -60,8 +60,8 @@ extension Random.GeneratorTests.Test.Unit {
         #expect(buffer.allSatisfy { $0 == 0xAB })
     }
 
-    @Test("Generator handles empty buffer")
-    func emptyBuffer() throws {
+    @Test
+    func `Generator handles empty buffer`() throws {
         var generator = MockGenerator()
         var buffer: [UInt8] = []
         try buffer.withUnsafeMutableBytes { ptr in
@@ -70,8 +70,8 @@ extension Random.GeneratorTests.Test.Unit {
         #expect(buffer.isEmpty)
     }
 
-    @Test("Generator can throw typed error")
-    func throwsTypedError() {
+    @Test
+    func `Generator can throw typed error`() {
         var generator = FailingGenerator(error: .entropyNotReady)
         var buffer = [UInt8](repeating: 0, count: 16)
 
@@ -82,8 +82,8 @@ extension Random.GeneratorTests.Test.Unit {
         }
     }
 
-    @Test("Generator can throw systemError")
-    func throwsSystemError() {
+    @Test
+    func `Generator can throw systemError`() {
         var generator = FailingGenerator(error: .systemError(123))
         var buffer = [UInt8](repeating: 0, count: 16)
 
@@ -94,14 +94,14 @@ extension Random.GeneratorTests.Test.Unit {
         }
     }
 
-    @Test("Generator is Sendable")
-    func sendable() {
+    @Test
+    func `Generator is Sendable`() {
         let generator: any Random.Generator & Sendable = MockGenerator()
         _ = generator
     }
 
-    @Test("Generator can be used as existential")
-    func existential() throws {
+    @Test
+    func `Generator can be used as existential`() throws {
         var generator: any Random.Generator = MockGenerator(fillByte: 0xFF)
         var buffer = [UInt8](repeating: 0, count: 8)
         try buffer.withUnsafeMutableBytes { ptr in
@@ -114,8 +114,8 @@ extension Random.GeneratorTests.Test.Unit {
 // MARK: - Edge Cases
 
 extension Random.GeneratorTests.Test.EdgeCase {
-    @Test("Generator fills large buffer")
-    func largeBuffer() throws {
+    @Test
+    func `Generator fills large buffer`() throws {
         var generator = MockGenerator(fillByte: 0x42)
         var buffer = [UInt8](repeating: 0, count: 1024 * 1024)
         try buffer.withUnsafeMutableBytes { ptr in
@@ -124,8 +124,8 @@ extension Random.GeneratorTests.Test.EdgeCase {
         #expect(buffer.allSatisfy { $0 == 0x42 })
     }
 
-    @Test("Generator state can be mutated")
-    func mutableState() throws {
+    @Test
+    func `Generator state can be mutated`() throws {
         var generator = MockGenerator(fillByte: 0x01)
 
         var buffer1 = [UInt8](repeating: 0, count: 4)
