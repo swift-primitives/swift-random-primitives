@@ -19,7 +19,7 @@ extension Random {
     /// try Random.fill(buffer)
     ///
     /// // Using a custom generator
-    /// var generator: any Random.Generator = MyTestGenerator()
+    /// var generator = MyTestGenerator()
     /// try generator.fill(buffer)
     /// ```
     public protocol Generator: Sendable {
@@ -31,6 +31,6 @@ extension Random {
         /// - Parameter buffer: The buffer to fill with random bytes.
         ///   If the buffer is empty, this method returns immediately.
         /// - Throws: `Random.Error` if random bytes cannot be generated.
-        mutating func fill(_ buffer: UnsafeMutableRawBufferPointer) throws(Error)
+        mutating func fill(_ buffer: UnsafeMutableRawBufferPointer) throws(Random.Error)
     }
 }
